@@ -75,15 +75,18 @@ export function Header({ onCategoryChange }: HeaderProps) {
                 <button className="text-white hover:text-gray-200 transition-colors">
                   <Search className="size-6 md:hidden" />
                 </button>
-                <button className="text-white hover:text-gray-200 transition-colors hidden md:block">
+                <a href="/hesabim" className="text-white hover:text-gray-200 transition-colors hidden md:block">
                   <User className="size-6" />
-                </button>
-                <button className="text-white hover:text-gray-200 transition-colors hidden md:block">
+                </a>
+                <a href="/favoriler" className="text-white hover:text-gray-200 transition-colors hidden md:block">
                   <Heart className="size-6" />
-                </button>
-                <button className="text-white hover:text-gray-200 transition-colors">
+                </a>
+                <a href="/sepet" className="text-white hover:text-gray-200 transition-colors relative">
                   <ShoppingCart className="size-6" />
-                </button>
+                  <span className="absolute -top-2 -right-2 bg-pink-600 text-white text-xs rounded-full size-5 flex items-center justify-center font-bold">
+                    2
+                  </span>
+                </a>
                 <select className="bg-white/20 text-white border border-white/40 rounded px-2 py-1 text-sm outline-none">
                   <option className="text-gray-900">TR</option>
                   <option className="text-gray-900">EN</option>

@@ -10,10 +10,12 @@ interface ProductCardProps {
   badge?: string;
 }
 
-export function ProductCard({ name, price, oldPrice, image, badge }: ProductCardProps) {
+export function ProductCard({ id, name, price, oldPrice, image, badge }: ProductCardProps) {
   const [isLiked, setIsLiked] = useState(false);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
     // Simulate random payment result for demo
     const isSuccess = Math.random() > 0.3; // 70% success rate
     
@@ -24,8 +26,17 @@ export function ProductCard({ name, price, oldPrice, image, badge }: ProductCard
     }
   };
 
+  const handleLike = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsLiked(!isLiked);
+  };
+
   return (
-    <div className="group relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+    <a 
+      href={`/urun/${id}`}
+      className="group relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow block"
+    >
       <div className="relative aspect-[3/4] overflow-hidden bg-gray-100">
         <img 
           src={image}
@@ -40,7 +51,7 @@ export function ProductCard({ name, price, oldPrice, image, badge }: ProductCard
         )}
         
         <button 
-          onClick={() => setIsLiked(!isLiked)}
+          onClick={handleLike}
           className="absolute top-3 right-3 bg-white size-9 rounded-full flex items-center justify-center hover:bg-pink-50 transition-colors shadow-md"
         >
           <Heart 
@@ -66,6 +77,6 @@ export function ProductCard({ name, price, oldPrice, image, badge }: ProductCard
           )}
         </div>
       </div>
-    </div>
+    </a>
   );
 }

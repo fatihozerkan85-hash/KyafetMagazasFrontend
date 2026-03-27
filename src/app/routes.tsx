@@ -12,6 +12,7 @@ import { Contact } from "./pages/Contact";
 import { OrderTracking } from "./pages/OrderTracking";
 import { FAQ } from "./pages/FAQ";
 import { Account } from "./pages/Account";
+import { Login } from "./pages/Login";
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ export const router = createBrowserRouter([
   {
     path: "/hesabim",
     element: <Account />,
+  },
+  {
+    path: "/giris",
+    element: <Login />,
   },
   {
     path: "/odeme",

@@ -1,6 +1,9 @@
-import { Search, ShoppingCart, User, Menu, Heart } from 'lucide-react';
-import { useState } from 'react';
+import { Search, ShoppingCart, User, Menu, Heart, LogOut, Package, Settings } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
 import headerBg from 'figma:asset/15496945350b67a7b248006150bb217ebb850302.png';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from 'react-router';
+import { toast } from 'sonner';
 
 interface HeaderProps {
   onCategoryChange?: (category: string) => void;
@@ -9,6 +12,24 @@ interface HeaderProps {
 export function Header({ onCategoryChange }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState('all');
+  const [userDropdownOpen, setUserDropdownOpen] = useState(false);
+  const { user, logout, isAuthenticated } = useAuth();
+  const navigate = useNavigate();
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setUserDropdownOpen(false);
+      }
+    }
+
+    if (userDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [userDropdownOpen]);
 
   const handleCategoryClick = (categoryId: string) => {
     setActiveCategory(categoryId);
@@ -20,6 +41,13 @@ export function Header({ onCategoryChange }: HeaderProps) {
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  };
+
+  const handleLogout = () => {
+    logout();
+    setUserDropdownOpen(false);
+    toast.success('Çıkış yapıldı. Güle güle! 👋');
+    navigate('/');
   };
 
   const categories = [
@@ -75,9 +103,83 @@ export function Header({ onCategoryChange }: HeaderProps) {
                 <button className="text-white hover:text-gray-200 transition-colors">
                   <Search className="size-6 md:hidden" />
                 </button>
-                <a href="/hesabim" className="text-white hover:text-gray-200 transition-colors hidden md:block">
-                  <User className="size-6" />
-                </a>
+                
+                {/* User Dropdown or Login Button */}
+                {isAuthenticated && user ? (
+                  <div className="relative hidden md:block" ref={dropdownRef}>
+                    <button
+                      onClick={() => setUserDropdownOpen(!userDropdownOpen)}
+                      className="flex items-center gap-2 text-white hover:text-gray-200 transition-colors bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full"
+                    >
+                      <User className="size-5" />
+                      <span className="text-sm font-medium">
+                        Hoşgeldin, {user.name} {user.surname}
+                      </span>
+                    </button>
+
+                    {/* Dropdown Menu */}
+                    {userDropdownOpen && (
+                      <div className="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border-2 border-gray-100 overflow-hidden">
+                        <div className="bg-gradient-to-r from-pink-500 to-purple-500 text-white p-4">
+                          <p className="font-bold text-lg">{user.name} {user.surname}</p>
+                          <p className="text-sm opacity-90">{user.email}</p>
+                        </div>
+                        <div className="py-2">
+                          <a
+                            href="/hesabim"
+                            className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors text-gray-700"
+                            onClick={() => setUserDropdownOpen(false)}
+                          >
+                            <User className="size-5 text-pink-600" />
+                            <span>Hesabım</span>
+                          </a>
+                          <a
+                            href="/hesabim?tab=orders"
+                            className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors text-gray-700"
+                            onClick={() => setUserDropdownOpen(false)}
+                          >
+                            <Package className="size-5 text-pink-600" />
+                            <span>Siparişlerim</span>
+                          </a>
+                          <a
+                            href="/favoriler"
+                            className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors text-gray-700"
+                            onClick={() => setUserDropdownOpen(false)}
+                          >
+                            <Heart className="size-5 text-pink-600" />
+                            <span>Favorilerim</span>
+                          </a>
+                          <a
+                            href="/hesabim?tab=settings"
+                            className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors text-gray-700"
+                            onClick={() => setUserDropdownOpen(false)}
+                          >
+                            <Settings className="size-5 text-pink-600" />
+                            <span>Ayarlar</span>
+                          </a>
+                          <div className="border-t border-gray-100 mt-2 pt-2">
+                            <button
+                              onClick={handleLogout}
+                              className="flex items-center gap-3 px-4 py-3 hover:bg-red-50 transition-colors text-red-600 w-full"
+                            >
+                              <LogOut className="size-5" />
+                              <span className="font-semibold">Çıkış Yap</span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <a
+                    href="/giris"
+                    className="hidden md:flex items-center gap-2 text-white hover:text-gray-200 transition-colors bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full"
+                  >
+                    <User className="size-5" />
+                    <span className="text-sm font-medium">Giriş Yap</span>
+                  </a>
+                )}
+
                 <a href="/favoriler" className="text-white hover:text-gray-200 transition-colors hidden md:block">
                   <Heart className="size-6" />
                 </a>

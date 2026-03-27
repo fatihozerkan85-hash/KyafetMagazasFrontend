@@ -1,4 +1,4 @@
-import { Search, ShoppingCart, User, Menu, Heart, LogOut, Package, Settings } from 'lucide-react';
+import { Search, ShoppingCart, User, Menu, Heart, LogOut, Package, Settings, X, Home, Phone, HelpCircle, MapPin } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import headerBg from 'figma:asset/15496945350b67a7b248006150bb217ebb850302.png';
 import { useAuth } from '../context/AuthContext';
@@ -217,30 +217,215 @@ export function Header({ onCategoryChange }: HeaderProps) {
               </button>
             ))}
           </nav>
-
-          {/* Mobile Navigation */}
-          {mobileMenuOpen && (
-            <nav className="md:hidden pb-4 pt-2 flex flex-col gap-2">
-              {categories.map((cat) => (
-                <button
-                  key={cat.id}
-                  onClick={() => {
-                    handleCategoryClick(cat.id);
-                    setMobileMenuOpen(false);
-                  }}
-                  className={`px-6 py-2 rounded-full font-medium text-left ${
-                    activeCategory === cat.id
-                      ? 'bg-pink-500 text-white'
-                      : 'text-gray-700 hover:bg-gray-100'
-                  }`}
-                >
-                  {cat.name}
-                </button>
-              ))}
-            </nav>
-          )}
         </div>
       </div>
+
+      {/* Mobile Full Screen Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden fixed inset-0 bg-white z-50 overflow-y-auto">
+          <div className="min-h-screen">
+            {/* Mobile Menu Header */}
+            <div 
+              className="relative bg-cover bg-center"
+              style={{ 
+                backgroundImage: `url(${headerBg})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}
+            >
+              <div className="bg-red-900/30 backdrop-blur-sm">
+                <div className="px-4 py-6">
+                  <div className="flex items-center justify-between">
+                    <div className="text-white">
+                      <div className="text-3xl font-bold tracking-wider">LADIORA</div>
+                      <div className="text-sm tracking-widest">BOUTIQUE</div>
+                    </div>
+                    <button 
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="text-white hover:text-gray-200 transition-colors"
+                    >
+                      <X className="size-8" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile Menu Content */}
+            <div className="px-4 py-6">
+              {/* User Section */}
+              {isAuthenticated && user ? (
+                <div className="mb-6 bg-gradient-to-r from-pink-500 to-purple-500 rounded-2xl p-6 text-white">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="size-12 bg-white/20 rounded-full flex items-center justify-center">
+                      <User className="size-6" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-lg">Hoşgeldin!</p>
+                      <p className="text-sm">{user.name} {user.surname}</p>
+                    </div>
+                  </div>
+                  <p className="text-sm opacity-90">{user.email}</p>
+                </div>
+              ) : (
+                <div className="mb-6">
+                  <a
+                    href="/giris"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center justify-center gap-2 bg-gradient-to-r from-pink-500 to-purple-500 text-white py-4 rounded-xl font-semibold shadow-lg"
+                  >
+                    <User className="size-5" />
+                    Giriş Yap / Üye Ol
+                  </a>
+                </div>
+              )}
+
+              {/* Quick Actions */}
+              <div className="mb-6 grid grid-cols-3 gap-3">
+                <a
+                  href="/favoriler"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex flex-col items-center gap-2 bg-pink-50 py-4 rounded-xl hover:bg-pink-100 transition-colors"
+                >
+                  <Heart className="size-6 text-pink-600" />
+                  <span className="text-xs font-medium text-gray-900">Favoriler</span>
+                </a>
+                <a
+                  href="/sepet"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex flex-col items-center gap-2 bg-pink-50 py-4 rounded-xl hover:bg-pink-100 transition-colors relative"
+                >
+                  <ShoppingCart className="size-6 text-pink-600" />
+                  <span className="text-xs font-medium text-gray-900">Sepetim</span>
+                  <span className="absolute top-2 right-2 bg-pink-600 text-white text-xs rounded-full size-5 flex items-center justify-center font-bold">
+                    2
+                  </span>
+                </a>
+                <a
+                  href="/siparis-takip"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex flex-col items-center gap-2 bg-pink-50 py-4 rounded-xl hover:bg-pink-100 transition-colors"
+                >
+                  <Package className="size-6 text-pink-600" />
+                  <span className="text-xs font-medium text-gray-900">Siparişler</span>
+                </a>
+              </div>
+
+              {/* Categories */}
+              <div className="mb-6">
+                <h3 className="font-bold text-gray-900 mb-3 px-2">Kategoriler</h3>
+                <div className="space-y-2">
+                  {categories.map((cat) => (
+                    <button
+                      key={cat.id}
+                      onClick={() => {
+                        handleCategoryClick(cat.id);
+                        setMobileMenuOpen(false);
+                      }}
+                      className={`w-full px-6 py-3 rounded-xl font-medium text-left transition-all ${
+                        activeCategory === cat.id
+                          ? 'bg-pink-500 text-white shadow-lg'
+                          : 'bg-gray-50 text-gray-900 hover:bg-gray-100'
+                      }`}
+                    >
+                      {cat.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Menu Links */}
+              <div className="mb-6 border-t border-gray-200 pt-4">
+                <h3 className="font-bold text-gray-900 mb-3 px-2">Menü</h3>
+                <div className="space-y-1">
+                  <a
+                    href="/"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-50 transition-colors"
+                  >
+                    <Home className="size-5 text-pink-600" />
+                    <span>Ana Sayfa</span>
+                  </a>
+                  {isAuthenticated && (
+                    <a
+                      href="/hesabim"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-50 transition-colors"
+                    >
+                      <User className="size-5 text-pink-600" />
+                      <span>Hesabım</span>
+                    </a>
+                  )}
+                  <a
+                    href="/hakkimizda"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-50 transition-colors"
+                  >
+                    <MapPin className="size-5 text-pink-600" />
+                    <span>Hakkımızda</span>
+                  </a>
+                  <a
+                    href="/iletisim"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-50 transition-colors"
+                  >
+                    <Phone className="size-5 text-pink-600" />
+                    <span>İletişim</span>
+                  </a>
+                  <a
+                    href="/sss"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-50 transition-colors"
+                  >
+                    <HelpCircle className="size-5 text-pink-600" />
+                    <span>Sık Sorulan Sorular</span>
+                  </a>
+                </div>
+              </div>
+
+              {/* Settings */}
+              <div className="mb-6 border-t border-gray-200 pt-4">
+                <h3 className="font-bold text-gray-900 mb-3 px-2">Ayarlar</h3>
+                <div className="space-y-1">
+                  {isAuthenticated && (
+                    <a
+                      href="/hesabim?tab=settings"
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-50 transition-colors"
+                    >
+                      <Settings className="size-5 text-pink-600" />
+                      <span>Hesap Ayarları</span>
+                    </a>
+                  )}
+                  <div className="flex items-center justify-between px-4 py-3">
+                    <span className="text-gray-700 font-medium">Dil / Language</span>
+                    <select className="bg-gray-100 text-gray-900 border border-gray-300 rounded-lg px-3 py-2 text-sm outline-none">
+                      <option>🇹🇷 Türkçe</option>
+                      <option>🇬🇧 English</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              {/* Logout Button */}
+              {isAuthenticated && (
+                <div className="border-t border-gray-200 pt-4">
+                  <button
+                    onClick={() => {
+                      handleLogout();
+                      setMobileMenuOpen(false);
+                    }}
+                    className="w-full flex items-center justify-center gap-3 bg-red-50 text-red-600 py-4 rounded-xl font-semibold hover:bg-red-100 transition-colors"
+                  >
+                    <LogOut className="size-5" />
+                    Çıkış Yap
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </header>
   );
 }

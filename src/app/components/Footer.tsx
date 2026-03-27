@@ -89,6 +89,15 @@ export function Footer() {
               📞 +90 (212) 555 0123<br />
               📧 info@ladiora.com.tr
             </p>
+            
+            {/* Demo Links */}
+            <div className="mt-4 pt-4 border-t border-gray-700">
+              <p className="text-xs text-gray-500 mb-2">Demo:</p>
+              <div className="flex flex-col gap-1 text-xs">
+                <a href="/odeme-basarili" className="text-green-400 hover:text-green-300">✓ Başarılı Ödeme</a>
+                <a href="/odeme-basarisiz" className="text-red-400 hover:text-red-300">✗ Başarısız Ödeme</a>
+              </div>
+            </div>
           </div>
         </div>
 

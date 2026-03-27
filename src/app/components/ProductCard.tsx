@@ -13,6 +13,17 @@ interface ProductCardProps {
 export function ProductCard({ name, price, oldPrice, image, badge }: ProductCardProps) {
   const [isLiked, setIsLiked] = useState(false);
 
+  const handleAddToCart = () => {
+    // Simulate random payment result for demo
+    const isSuccess = Math.random() > 0.3; // 70% success rate
+    
+    if (isSuccess) {
+      window.location.href = '/odeme-basarili';
+    } else {
+      window.location.href = '/odeme-basarisiz';
+    }
+  };
+
   return (
     <div className="group relative bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
       <div className="relative aspect-[3/4] overflow-hidden bg-gray-100">
@@ -37,7 +48,10 @@ export function ProductCard({ name, price, oldPrice, image, badge }: ProductCard
           />
         </button>
 
-        <button className="absolute bottom-0 left-0 right-0 bg-pink-600 text-white py-3 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 font-semibold">
+        <button 
+          onClick={handleAddToCart}
+          className="absolute bottom-0 left-0 right-0 bg-pink-600 text-white py-3 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 font-semibold"
+        >
           <ShoppingCart className="size-4" />
           <span>Sepete Ekle</span>
         </button>

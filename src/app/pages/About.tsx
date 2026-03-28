@@ -1,6 +1,6 @@
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
-import { Heart, Award, Truck, Shield, Users, Target, Sparkles } from 'lucide-react';
+import { Heart, Award, Truck, Shield, Users, Target, Sparkles, Star, Gift, Scissors, Smile } from 'lucide-react';
 
 export function About() {
   const values = [
@@ -26,26 +26,49 @@ export function About() {
     },
   ];
 
-  const timeline = [
+  const features = [
     {
-      year: '2018',
-      title: 'Kuruluş',
-      description: 'Ladiora Boutique, kadınlara özel tasarım ve kaliteli giyim ürünleri sunmak amacıyla İstanbul\'da kuruldu.',
+      icon: Star,
+      title: 'Özenle Seçilmiş Koleksiyonlar',
+      description: 'Her ürün, kalite ve tasarım açısından titizlikle seçilir. Gardırobunuza değer katacak parçalar sunuyoruz.',
     },
     {
-      year: '2020',
-      title: 'Online Mağaza',
-      description: 'E-ticaret sitemizi açarak Türkiye\'nin her yerine ulaşmaya başladık.',
+      icon: Gift,
+      title: 'Kişiye Özel Deneyim',
+      description: 'Her müşterimiz bizim için özeldir. Size en uygun stil ve bedeni bulmanız için buradayız.',
     },
     {
-      year: '2022',
-      title: 'Büyüme',
-      description: '50.000+ mutlu müşteriye ulaştık ve ürün yelpazemizi genişlettik.',
+      icon: Scissors,
+      title: 'Benzersiz Tasarımlar',
+      description: 'Sıradanlıktan uzak, kendinizi ifade edebileceğiniz özgün ve şık tasarımlar.',
     },
     {
-      year: '2026',
-      title: 'Bugün',
-      description: 'Türkiye\'nin önde gelen online moda platformlarından biri haline geldik.',
+      icon: Smile,
+      title: 'Mutlu Alışveriş',
+      description: 'Kolay iade, hızlı kargo ve sürekli destek ile alışveriş deneyiminizi keyifli hale getiriyoruz.',
+    },
+  ];
+
+  const process = [
+    {
+      step: '01',
+      title: 'Tasarım & Seçim',
+      description: 'Her sezon moda trendlerini analiz eder, kaliteli ve özgün parçaları sizin için özenle seçeriz.',
+    },
+    {
+      step: '02',
+      title: 'Kalite Kontrolü',
+      description: 'Tüm ürünlerimiz depoya gelmeden önce detaylı kalite kontrolünden geçer.',
+    },
+    {
+      step: '03',
+      title: 'Özenli Paketleme',
+      description: 'Siparişiniz özel paketleme ile hazırlanır ve size güvenle ulaştırılır.',
+    },
+    {
+      step: '04',
+      title: 'Hızlı Teslimat',
+      description: 'Kargo sürecinizi adım adım takip edebilir, ürününüze hızlıca kavuşabilirsiniz.',
     },
   ];
 
@@ -82,7 +105,7 @@ export function About() {
               </h2>
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  <strong className="text-pink-600">Ladiora Boutique</strong>, 2018 yılında kadınların gardıroplarına değer katacak, 
+                  <strong className="text-pink-600">Ladiora Boutique</strong>, kadınların gardıroplarına değer katacak, 
                   onları özel hissettirecek tasarımlar yaratma hayaliyle kuruldu.
                 </p>
                 <p>
@@ -105,86 +128,91 @@ export function About() {
                 alt="Ladiora Boutique"
                 className="rounded-2xl shadow-2xl"
               />
-              <div className="absolute -bottom-6 -left-6 bg-pink-600 text-white p-6 rounded-xl shadow-xl">
-                <p className="text-4xl font-bold mb-1">5+</p>
-                <p className="text-sm">Yıllık Tecrübe</p>
+              <div className="absolute -bottom-6 -left-6 bg-gradient-to-br from-pink-600 to-purple-600 text-white p-6 rounded-xl shadow-xl">
+                <p className="text-2xl font-bold mb-1">Yeni & Fresh</p>
+                <p className="text-sm opacity-90">Taze Koleksiyonlar</p>
               </div>
             </div>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-pink-600 mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* Values */}
-          <div className="mb-20">
+          {/* Sizin İçin - What We Offer */}
+          <div className="mb-20 bg-gradient-to-br from-pink-50 to-purple-50 rounded-3xl p-8 md:p-12">
             <h2 className="text-4xl font-bold text-gray-900 text-center mb-4">
-              Değerlerimiz
+              Sizin İçin
             </h2>
             <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-              Ladiora Boutique olarak, işimizin temelini oluşturan değerlerimiz:
+              Ladiora Boutique olarak size özel olarak sunduğumuz değerler:
             </p>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {values.map((value, index) => (
-                <div key={index} className="bg-gradient-to-br from-pink-50 to-purple-50 rounded-xl p-6 hover:shadow-lg transition-shadow">
-                  <div className="size-14 bg-pink-600 rounded-full flex items-center justify-center mb-4">
-                    <value.icon className="size-7 text-white" />
+              {features.map((feature, index) => (
+                <div key={index} className="bg-white rounded-xl p-6 hover:shadow-xl transition-shadow">
+                  <div className="size-14 bg-gradient-to-br from-pink-600 to-purple-600 rounded-full flex items-center justify-center mb-4">
+                    <feature.icon className="size-7 text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 mb-3">
-                    {value.title}
+                    {feature.title}
                   </h3>
                   <p className="text-gray-700 leading-relaxed">
-                    {value.description}
+                    {feature.description}
                   </p>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Timeline */}
+          {/* Nasıl Çalışıyoruz - Process */}
           <div className="mb-20">
-            <h2 className="text-4xl font-bold text-gray-900 text-center mb-12">
-              Yolculuğumuz
+            <h2 className="text-4xl font-bold text-gray-900 text-center mb-4">
+              Nasıl Çalışıyoruz?
             </h2>
-            <div className="relative">
-              {/* Timeline Line */}
-              <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-pink-600 to-purple-600 transform -translate-x-1/2"></div>
-              
-              <div className="space-y-12">
-                {timeline.map((item, index) => (
-                  <div key={index} className={`relative flex items-center ${
-                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                  }`}>
-                    {/* Content */}
-                    <div className={`w-full md:w-5/12 ${
-                      index % 2 === 0 ? 'md:text-right md:pr-12' : 'md:text-left md:pl-12'
-                    }`}>
-                      <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-pink-100">
-                        <div className="inline-block bg-pink-600 text-white px-4 py-1 rounded-full text-sm font-bold mb-3">
-                          {item.year}
-                        </div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                          {item.title}
-                        </h3>
-                        <p className="text-gray-600">
-                          {item.description}
-                        </p>
-                      </div>
+            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+              Ürünleriniz sizlere ulaşana kadar geçen süreçteki adımlarımız:
+            </p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {process.map((item, index) => (
+                <div key={index} className="relative group">
+                  <div className="bg-white border-2 border-pink-200 rounded-2xl p-6 hover:shadow-xl hover:border-pink-400 transition-all">
+                    <div className="size-16 bg-gradient-to-br from-pink-600 to-purple-600 rounded-full flex items-center justify-center mb-4 mx-auto">
+                      <span className="text-2xl font-bold text-white">{item.step}</span>
                     </div>
-
-                    {/* Center Dot */}
-                    <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 size-6 bg-pink-600 rounded-full border-4 border-white shadow-lg z-10"></div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed text-center text-sm">
+                      {item.description}
+                    </p>
                   </div>
-                ))}
-              </div>
+                  {/* Connector Line - Hidden on last item and mobile */}
+                  {index < process.length - 1 && (
+                    <div className="hidden lg:block absolute top-8 -right-3 w-6 h-0.5 bg-gradient-to-r from-pink-300 to-purple-300"></div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Values - Core Principles */}
+          <div className="mb-20 bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-8 md:p-12">
+            <h2 className="text-4xl font-bold text-gray-900 text-center mb-4">
+              Temel Değerlerimiz
+            </h2>
+            <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+              Ladiora Boutique olarak, işimizin temelini oluşturan prensiplerimiz:
+            </p>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {values.map((value, index) => (
+                <div key={index} className="bg-white rounded-xl p-6 hover:shadow-xl transition-shadow">
+                  <div className="size-14 bg-gradient-to-br from-pink-600 to-purple-600 rounded-full flex items-center justify-center mb-4 mx-auto">
+                    <value.icon className="size-7 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 text-center">
+                    {value.title}
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed text-center text-sm">
+                    {value.description}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
 

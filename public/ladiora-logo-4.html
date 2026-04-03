@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ladiora Logo 4 - Fashion Icon</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f3f4f6;
+        }
+        #logo {
+            width: 512px;
+            height: 512px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <svg id="logo" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="bgGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#FDF2F8;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#FAE8FF;stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="dressGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#DB2777;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#9333EA;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+        
+        <rect width="1024" height="1024" fill="url(#bgGrad4)" />
+        
+        <!-- Dress silhouette -->
+        <path
+            d="M 412 250 L 612 250 L 650 350 L 650 750 Q 650 800 600 800 L 424 800 Q 374 800 374 750 L 374 350 Z"
+            fill="url(#dressGrad)"
+        />
+        
+        <!-- Dress waist -->
+        <ellipse cx="512" cy="500" rx="100" ry="20" fill="#9333EA" opacity="0.3" />
+        
+        <!-- Hanger hook -->
+        <line x1="512" y1="200" x2="512" y2="250" stroke="#4B5563" stroke-width="8" stroke-linecap="round" />
+        <circle cx="512" cy="190" r="15" fill="#4B5563" />
+        
+        <!-- Brand name -->
+        <text
+            x="512"
+            y="920"
+            font-family="Arial, sans-serif"
+            font-size="80"
+            font-weight="bold"
+            fill="url(#dressGrad)"
+            text-anchor="middle"
+            letter-spacing="4"
+        >
+            LADIORA
+        </text>
+        
+        <!-- Sparkles -->
+        <circle cx="350" cy="300" r="8" fill="#DB2777" opacity="0.6" />
+        <circle cx="370" cy="320" r="5" fill="#DB2777" opacity="0.4" />
+        <circle cx="674" cy="300" r="8" fill="#9333EA" opacity="0.6" />
+        <circle cx="654" cy="320" r="5" fill="#9333EA" opacity="0.4" />
+    </svg>
+</body>
+</html>

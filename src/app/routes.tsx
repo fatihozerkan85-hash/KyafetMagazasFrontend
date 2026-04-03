@@ -13,6 +13,8 @@ import { OrderTracking } from "./pages/OrderTracking";
 import { FAQ } from "./pages/FAQ";
 import { Account } from "./pages/Account";
 import { Login } from "./pages/Login";
+import { InstagramPlanner } from "./pages/InstagramPlanner";
+import { ProfileImageGenerator } from "./pages/ProfileImageGenerator";
 
 export const router = createBrowserRouter([
   {
@@ -66,6 +68,14 @@ export const router = createBrowserRouter([
   {
     path: "/odeme-basarisiz",
     element: <PaymentFailed />,
+  },
+  {
+    path: "/instagram-planlayici",
+    element: <InstagramPlanner />,
+  },
+  {
+    path: "/profil-resmi",
+    element: <ProfileImageGenerator />,
   },
   {
     path: "*",

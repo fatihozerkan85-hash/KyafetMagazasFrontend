@@ -16,6 +16,7 @@ import { Login } from "./pages/Login";
 import { InstagramPlanner } from "./pages/InstagramPlanner";
 import { ProfileImageGenerator } from "./pages/ProfileImageGenerator";
 import { YouTubePlanner } from "./pages/YouTubePlanner";
+import { Discover } from "./pages/Discover";
 
 export const router = createBrowserRouter([
   {
@@ -81,6 +82,10 @@ export const router = createBrowserRouter([
   {
     path: "/youtube-planlayici",
     element: <YouTubePlanner />,
+  },
+  {
+    path: "/kesfet",
+    element: <Discover />,
   },
   {
     path: "*",

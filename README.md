@@ -5,7 +5,7 @@ Modern, responsive ve tamamen frontend tabanlı bir moda butik web sitesi.
 ## 🎯 Özellikler
 
 ### 🛍️ E-Ticaret Özellikleri
-- **19 Sayfalık Tam Teşekküllü Site**
+- **20 Sayfalık Tam Teşekküllü Site**
 - Ürün kataloğu ve detay sayfaları
 - Alışveriş sepeti yönetimi
 - Favoriler sistemi
@@ -15,6 +15,7 @@ Modern, responsive ve tamamen frontend tabanlı bir moda butik web sitesi.
 
 ### 📱 Sayfa Yapısı
 - **Ana Sayfa** - Hero banner, kategoriler, öne çıkan ürünler
+- **Keşfet** - Blog/Dergi tarzı içerik sayfası
 - **Ürün Kategorileri** - Casual, Hoodie Cape, Sweatshirt, Kimono, Takı & Aksesuar, Şal
 - **Ürün Detay** - Beden seçimi, renk seçenekleri, açıklama
 - **Sepet** - Ürün yönetimi, miktar güncelleme
@@ -133,6 +134,7 @@ ladiora-boutique/
 | Rota | Açıklama |
 |------|----------|
 | `/` | Ana sayfa |
+| `/kesfet` | Keşfet sayfası |
 | `/kategori/:category` | Kategori sayfası |
 | `/urun/:id` | Ürün detay |
 | `/sepet` | Alışveriş sepeti |

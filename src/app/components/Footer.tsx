@@ -39,10 +39,10 @@ export function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4">Kurumsal</h4>
             <ul className="space-y-2">
-              <li><a href="#" className="hover:text-pink-400 transition-colors">Hakkımızda</a></li>
-              <li><a href="#" className="hover:text-pink-400 transition-colors">İletişim</a></li>
-              <li><a href="#" className="hover:text-pink-400 transition-colors">Mağazalarımız</a></li>
-              <li><a href="#" className="hover:text-pink-400 transition-colors">Kariyer</a></li>
+              <li><a href="/hakkimizda" className="hover:text-pink-400 transition-colors">Hakkımızda</a></li>
+              <li><a href="/iletisim" className="hover:text-pink-400 transition-colors">İletişim</a></li>
+              <li><a href="/kesfet" className="hover:text-pink-400 transition-colors">Keşfet</a></li>
+              <li><a href="/sss" className="hover:text-pink-400 transition-colors">SSS</a></li>
             </ul>
           </div>
 

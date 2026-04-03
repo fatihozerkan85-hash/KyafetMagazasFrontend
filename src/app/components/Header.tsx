@@ -1,4 +1,4 @@
-import { Search, ShoppingCart, User, Menu, Heart, LogOut, Package, Settings, X, Home, Phone, HelpCircle, MapPin } from 'lucide-react';
+import { Search, ShoppingCart, User, Menu, Heart, LogOut, Package, Settings, X, Home, Phone, HelpCircle, MapPin, Sparkles } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 import headerBg from 'figma:asset/15496945350b67a7b248006150bb217ebb850302.png';
 import { useAuth } from '../context/AuthContext';
@@ -216,6 +216,13 @@ export function Header({ onCategoryChange }: HeaderProps) {
                 {cat.name}
               </button>
             ))}
+            <a
+              href="/kesfet"
+              className="px-6 py-2 rounded-full font-medium transition-colors whitespace-nowrap text-pink-600 hover:bg-pink-50 flex items-center gap-2"
+            >
+              <Sparkles className="size-4" />
+              Keşfet
+            </a>
           </nav>
         </div>
       </div>
@@ -345,6 +352,14 @@ export function Header({ onCategoryChange }: HeaderProps) {
                   >
                     <Home className="size-5 text-pink-600" />
                     <span>Ana Sayfa</span>
+                  </a>
+                  <a
+                    href="/kesfet"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl text-gray-700 hover:bg-gray-50 transition-colors"
+                  >
+                    <Sparkles className="size-5 text-pink-600" />
+                    <span>Keşfet</span>
                   </a>
                   {isAuthenticated && (
                     <a

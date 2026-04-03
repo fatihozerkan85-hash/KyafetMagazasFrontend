@@ -5,7 +5,7 @@ Modern, responsive ve tamamen frontend tabanlı bir moda butik web sitesi.
 ## 🎯 Özellikler
 
 ### 🛍️ E-Ticaret Özellikleri
-- **18 Sayfalık Tam Teşekküllü Site**
+- **19 Sayfalık Tam Teşekküllü Site**
 - Ürün kataloğu ve detay sayfaları
 - Alışveriş sepeti yönetimi
 - Favoriler sistemi
@@ -36,8 +36,18 @@ Modern, responsive ve tamamen frontend tabanlı bir moda butik web sitesi.
   - Kategori filtreleme (Ürün Tanıtımı, Motivasyon, Stil Önerisi, vb.)
   - Tek tıkla kopyalama özelliği
 
+- **YouTube İçerik Planlayıcı** (`/youtube-planlayici`)
+  - 12 haftalık video içerik fikirleri
+  - Video başlıkları ve açıklamaları
+  - Hashtag setleri ve thumbnail önerileri
+  - Video açılış hook'ları
+  - Kategori filtreleme (Koleksiyon Tanıtımı, Stil Önerileri, Shopping Haul, vb.)
+  - Kanal banner ve profil resmi tasarımları
+  - Thumbnail şablonları
+  - Tek tıkla kopyalama özelliği
+
 - **WhatsApp Profil Resmi Oluşturucu** (`/profil-resmi`)
-  - 4 farklı profesyonel logo tasarımı
+  - 2 farklı profesyonel logo tasarımı
   - PNG formatında indirilebilir
   - Marka kimliğine uygun tasarımlar
 
@@ -137,6 +147,7 @@ ladiora-boutique/
 | `/sss` | SSS |
 | `/hakkimizda` | Hakkımızda |
 | `/instagram-planlayici` | Instagram içerik planlayıcı |
+| `/youtube-planlayici` | YouTube içerik planlayıcı |
 | `/profil-resmi` | Profil resmi oluşturucu |
 
 ## 💡 Özellikler Detayı
@@ -169,8 +180,18 @@ ladiora-boutique/
 - Kategori bazlı filtreleme
 - Tek tıkla kopyalama
 
+### YouTube Planlayıcı Özellikleri
+- 12 haftalık video içerik fikirleri
+- Video başlıkları ve açıklamaları
+- Hashtag setleri ve thumbnail önerileri
+- Video açılış hook'ları
+- Kategori filtreleme (Koleksiyon Tanıtımı, Stil Önerileri, Shopping Haul, vb.)
+- Kanal banner ve profil resmi tasarımları
+- Thumbnail şablonları
+- Tek tıkla kopyalama
+
 ### Profil Resmi Oluşturucu
-- 4 farklı tasarım seçeneği
+- 2 farklı tasarım seçeneği
 - Yüksek çözünürlüklü PNG çıktı
 - Marka renklerine uyumlu
 - WhatsApp, Instagram, Facebook için optimize

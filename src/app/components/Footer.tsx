@@ -92,10 +92,11 @@ export function Footer() {
             
             {/* Demo Links */}
             <div className="mt-4 pt-4 border-t border-gray-700">
-              <p className="text-xs text-gray-500 mb-2">Demo:</p>
+              <p className="text-xs text-gray-500 mb-2">İçerik Araçları:</p>
               <div className="flex flex-col gap-1 text-xs">
-                <a href="/odeme-basarili" className="text-green-400 hover:text-green-300">✓ Başarılı Ödeme</a>
-                <a href="/odeme-basarisiz" className="text-red-400 hover:text-red-300">✗ Başarısız Ödeme</a>
+                <a href="/instagram-planlayici" className="text-pink-400 hover:text-pink-300">📸 Instagram Planlayıcı</a>
+                <a href="/youtube-planlayici" className="text-red-400 hover:text-red-300">🎥 YouTube Planlayıcı</a>
+                <a href="/profil-resmi" className="text-purple-400 hover:text-purple-300">🎨 Profil Resmi</a>
               </div>
             </div>
           </div>

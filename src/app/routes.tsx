@@ -15,6 +15,7 @@ import { Account } from "./pages/Account";
 import { Login } from "./pages/Login";
 import { InstagramPlanner } from "./pages/InstagramPlanner";
 import { ProfileImageGenerator } from "./pages/ProfileImageGenerator";
+import { YouTubePlanner } from "./pages/YouTubePlanner";
 
 export const router = createBrowserRouter([
   {
@@ -76,6 +77,10 @@ export const router = createBrowserRouter([
   {
     path: "/profil-resmi",
     element: <ProfileImageGenerator />,
+  },
+  {
+    path: "/youtube-planlayici",
+    element: <YouTubePlanner />,
   },
   {
     path: "*",
